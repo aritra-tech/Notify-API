@@ -4,6 +4,7 @@ import com.aritra.data.addOrUpdateNote
 import com.aritra.data.deleteNote
 import com.aritra.data.getNotesForId
 import com.aritra.data.model.Notes
+import com.aritra.data.requests.DeleteNoteRequest
 import com.aritra.data.requests.NotesRequest
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -47,7 +48,7 @@ fun Route.noteRoutes() {
     route("/delete-note") {
         post {
             val request = try {
-                call.receive<NotesRequest>()
+                call.receive<DeleteNoteRequest>()
             } catch (e: ContentTransformationException) {
                 call.respond(HttpStatusCode.BadRequest)
                 return@post

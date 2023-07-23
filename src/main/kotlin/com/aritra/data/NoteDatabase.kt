@@ -13,7 +13,7 @@ private val db = client.getDatabase("NotesDatabase")
 private val note = db.getCollection<Notes>()
 
 
-suspend fun getNotesForId(id: String) : Notes? {
+suspend fun getNotesForId(id: String): Notes? {
     return note.findOneById(id)
 }
 
@@ -27,9 +27,9 @@ suspend fun addOrUpdateNote(notes: Notes): Boolean {
     }
 }
 
-suspend fun deleteNote(noteId: String) : Boolean {
+suspend fun deleteNote(noteId: String): Boolean {
     val notesList = note.findOneById(Notes::id eq noteId)
     notesList?.let {
-        return note.deleteOneById(notesList.id).wasAcknowledged()
+        return note.deleteOneById(it.id).wasAcknowledged()
     } ?: return false
 }
