@@ -1,4 +1,4 @@
-package com.aritra.data
+package com.aritra.data.database
 
 import com.aritra.data.model.Notes
 import org.bson.types.ObjectId

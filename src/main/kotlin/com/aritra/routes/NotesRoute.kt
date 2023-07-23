@@ -1,9 +1,9 @@
 package com.aritra.routes
 
-import com.aritra.data.addOrUpdateNote
-import com.aritra.data.deleteNote
-import com.aritra.data.getAllNotes
-import com.aritra.data.getNotesForId
+import com.aritra.data.database.addOrUpdateNote
+import com.aritra.data.database.deleteNote
+import com.aritra.data.database.getAllNotes
+import com.aritra.data.database.getNotesForId
 import com.aritra.data.model.Notes
 import com.aritra.data.requests.DeleteNoteRequest
 import com.aritra.data.requests.NotesRequest
