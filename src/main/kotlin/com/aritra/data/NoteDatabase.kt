@@ -12,6 +12,9 @@ private val db = client.getDatabase("NotesDatabase")
 
 private val note = db.getCollection<Notes>()
 
+suspend fun getAllNotes(): List<Notes> {
+    return note.find().toList()
+}
 
 suspend fun getNotesForId(id: String): Notes? {
     return note.findOneById(id)

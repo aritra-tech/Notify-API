@@ -2,6 +2,7 @@ package com.aritra.routes
 
 import com.aritra.data.addOrUpdateNote
 import com.aritra.data.deleteNote
+import com.aritra.data.getAllNotes
 import com.aritra.data.getNotesForId
 import com.aritra.data.model.Notes
 import com.aritra.data.requests.DeleteNoteRequest
@@ -13,6 +14,18 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Route.noteRoutes() {
+
+    route("/get-all-notes") {
+        get {
+            val listOfNote: List<Notes> = getAllNotes()
+            return@get if (listOfNote.isEmpty()) {
+                call.respond(HttpStatusCode.OK, "No Employees created")
+            } else {
+                call.respond(HttpStatusCode.OK, listOfNote)
+            }
+        }
+    }
+
     route("/get-notes") {
         get {
             val noteId = call.receive<NotesRequest>().id
